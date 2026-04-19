@@ -29,8 +29,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: -webkit-linear-gradient(45deg, rgb(255, 255, 255), rgb(46, 46, 208));
-    background: -moz-linear-gradient(45deg, rgb(255, 255, 255), rgb(46, 46, 208));
     background: linear-gradient(45deg, rgb(255, 255, 255), rgb(46, 46, 208));
   }
 
