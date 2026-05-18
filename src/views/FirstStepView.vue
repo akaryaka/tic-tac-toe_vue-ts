@@ -26,21 +26,24 @@
 </template>
 
 <style lang="scss">
-  .cells-header {
-    border: 1px solid #9494df;
-    border-radius: 10px;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    width: 450px;
-  } 
-
-  .cells__type-wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 30px;
+  .cells {
+    &-header {
+      border: 1px solid #9494df;
+      border-radius: 10px;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      width: 450px;
+    }
+    &__type {
+      &-wrapper {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+    }
   }
 
   .btn {
@@ -50,10 +53,9 @@
     border: 1px solid #9494df;
     padding: 10px 0;
     text-transform: uppercase;
-  }
-
-  .btn:hover {
-    background-color: #9494df;
-    color: #fff;
+    &:hover {
+      background-color: #9494df;
+      color: #fff;
+    }
   }
 </style>
