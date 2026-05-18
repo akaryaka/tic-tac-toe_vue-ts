@@ -1,6 +1,14 @@
 src /
 
+- assets/
 - components/
-- - tic-tac-toe /
-- - ui /
+- - TicTacToe.vue
+- composables/
+- - ticTacToe.ts
+- constants/
+- - index.ts
+- views/
+- - FirstStepView.vue
+- - SecondStepView.vue
+- - ThirdStepView.vue
 - App.vue
