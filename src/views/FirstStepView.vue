@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { changeValue } from '../constants';
+  import RadioButton from '../components/RadioButton.vue';
+  import { toSecondStep } from '../composables/ticTacToe';
 </script>
 
 <template>
@@ -7,19 +8,12 @@
     <div class="screen-1">
       <form action="#" class="cells-header ">
         <h1 class="cells__title ">Кто ходит первым?</h1>
+        <img class="cells__img" src="/1-step.jpg" alt="first-step">
         <div class="cells__type-wrapper">
-          <!-- вынести в компонент -->
-          <div class="cells__type ">
-            <label for="round">Нолики</label>
-            <input name="change" value="round" id="round" type="radio" v-model="changeValue" checked />
-          </div>
-          <!-- вынести в компонент -->
-          <div class="cells__type ">
-            <label for="cross">Крестики</label>
-            <input name="change" value="cross" id="cross" type="radio" v-model="changeValue"/>
-          </div>
+          <RadioButton title="Нолики" value="round" checked/>
+          <RadioButton title="Крестики" value="cross"/>
         </div>
-        <button class="btn" type="submit" id="cells-header__btn">играть</button>
+        <button @click="toSecondStep" class="btn" type="submit" id="cells-header__btn">играть</button>
       </form>
     </div>
   </div>
@@ -35,6 +29,14 @@
       flex-direction: column;
       background-color: #fff;
       width: 450px;
+    }
+    &__title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    &__img {
+      margin-bottom: 30px;
+      border-radius: 10px;
     }
     &__type {
       &-wrapper {
