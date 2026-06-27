@@ -5,6 +5,7 @@ import {
   buttons,
   displayFirstStep,
   displaySecondStep,
+  displayThirdStep,
   winCheck,
   btnActive,
 } from "../constants";
@@ -26,23 +27,72 @@ export const btnClick = function (event: Event, item: any) {
   } else if (changeValue.value == "cross" && countClick.value % 2 == 0) {
     item.class = "round";
   }
-  // console.log(item.class);
-
-  // event.currentTarget.classList.add(item.class);
-  // console.log(event.target);
 
   btnActive.push(item);
 };
 
+  
 watch(btnActive, (oldvalue, newvalue) => {
-  console.log(btnActive);
+  const roundWinList = btnActive.map(item => {
+    if (item.class == "round") {
+      return item.id
+    }
+  }).filter(item => {
+     return item != undefined
+  })
 
-  // let btnActiveArr = Object.values(btnActive);
-  // const check = winCheck.some(
-  // (arr) => JSON.stringify(arr) === JSON.stringify(btnActiveArr),
-  // );
-  // console.log(check);
+  
+  const crossWinList = btnActive.map(item => {
+    if (item.class == "cross") {
+      return item.id
+    } 
+    
+  }).filter(item => {
+    return item != undefined
+  })
+
+  function roundWinCheck() {
+    const roundStr = roundWinList.map(item => {
+      return item
+    })
+
+    const winCheckStr = winCheck.map(item => {
+      return String(item) == String(roundStr)
+    })
+
+    winCheckStr.map(item=> {
+      if (item === true){
+        alert("Победили нолики!")
+        displaySecondStep.value = false;
+        displayThirdStep.value = true;
+      }
+    })
+  }
+
+  function crossWinCheck() {
+    const crossdStr = crossWinList.map(item => {
+      return item
+    })
+
+    const winCheckStr = winCheck.map(item => {
+      return String(item) == String(crossdStr)
+    })
+
+    winCheckStr.map(item=> {
+      if (item === true){
+        alert("Победили нолики!")
+        displaySecondStep.value = false;
+        displayThirdStep.value = true;
+      }
+    })
+  }
+  
+  console.log(roundWinCheck());
+  console.log(crossWinCheck());
+
 });
+
+
 
 export const reset = function () {
   countClick.value = 0;
@@ -59,3 +109,5 @@ export const toSecondStep = function (event: Event) {
   displayFirstStep.value = false;
   displaySecondStep.value = true;
 };
+
+
