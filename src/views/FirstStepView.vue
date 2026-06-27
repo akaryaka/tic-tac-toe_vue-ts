@@ -4,8 +4,8 @@
 </script>
 
 <template>
-  <div class="container">
-    <div class="screen-1">
+  <div class="screen-1">
+    <Transition name="form">
       <form action="#" class="cells-header ">
         <h1 class="cells__title ">Кто ходит первым?</h1>
         <img class="cells__img" src="/1-step.jpg" alt="first-step">
@@ -15,11 +15,11 @@
         </div>
         <button @click="toSecondStep" class="btn" type="submit" id="cells-header__btn">играть</button>
       </form>
-    </div>
+    </Transition>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .cells {
     &-header {
       border: 1px solid #9494df;
@@ -59,5 +59,18 @@
       background-color: #9494df;
       color: #fff;
     }
+  }
+
+  .form-enter-active {
+    transition: all 0.3s ease-out;
+  }
+
+  .form-leave-active {
+    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+
+  .form-enter-from,
+  .form-leave-to  {
+    opacity: 0;
   }
 </style>
