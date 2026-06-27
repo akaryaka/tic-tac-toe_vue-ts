@@ -6,8 +6,10 @@
 </script>
 
 <template>
-  <FirstStepView v-show="displayFirstStep"/>
-  <SecondStepView v-show="displaySecondStep"/>
-  <ThirdStepView v-show="displayThirdStep"/>
+  <div class="container">
+    <FirstStepView v-show="displayFirstStep"/>
+    <SecondStepView v-show="displaySecondStep"/>
+    <ThirdStepView v-show="displayThirdStep"/>
+  </div>
 </template>
 
