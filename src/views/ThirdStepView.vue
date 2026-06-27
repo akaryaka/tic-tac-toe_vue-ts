@@ -5,7 +5,7 @@
 <template>
   <div class="container">
     <div class="screen-3">
-      <p class="screen-3__output"></p>
+      <p class="screen-3__output">Победа!</p>
     </div>
   </div>
 </template>
