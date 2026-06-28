@@ -30,76 +30,74 @@ export const btnClick = function (event: Event, item: any) {
 
   btnActive.push(item);
 };
-
   
 watch(btnActive, (oldvalue, newvalue) => {
-  const roundWinList = btnActive.map(item => {
-    if (item.class == "round") {
-      return item.id
+  const roundWinList = btnActive
+    .map(item => {
+      if (item.class == "round") {
+        return item.id
+      }
+    }).filter(item => {
+      return item != undefined
+    }).sort()
+  
+  const crossWinList = btnActive
+    .map(item => {
+      if (item.class == "cross") {
+        return item.id
+      } 
+    }).filter(item => {
+      return item != undefined
+    }).sort()
+
+
+  function resultGame() {
+    let resRound, resCross;
+
+    resRound =  winCheck.some(winItem => 
+      winItem.every(roundItem => roundWinList.includes(roundItem))
+    );
+
+    if (resRound) {
+      winner.value = "Нолики";
+      buttons.forEach(item => {
+        item.classDisabled = "disabled"
+      })
+      setTimeout(function() {
+        displaySecondStep.value = false;
+        displayThirdStep.value = true;
+      }, 1500)
     }
-  }).filter(item => {
-     return item != undefined
-  })
 
-  console.log(roundWinList);
-  
-  
-  
+    resCross =  winCheck.some(winItem => 
+      winItem.every(crossItem => crossWinList.includes(crossItem))
+    );
 
-  // console.log(roundWinListRemove);
-  
-  
-  const crossWinList = btnActive.map(item => {
-    if (item.class == "cross") {
-      return item.id
-    } 
-  }).filter(item => {
-    return item != undefined
-  })
-
-  function roundWinCheck() {
-    const winCheckStr = winCheck.map(item => {
-      return String(item) == String(roundWinList)
-    })
-
-    winCheckStr.map(item=> {
-      if (item === true){
-        winner.value = "Нолики";
-        // для анимации 
-        const roundWinListRemove = buttons.filter((item) => !roundWinList.includes(item.id))
-        roundWinListRemove.forEach(item => {
-          item.classDisabled = "disabled"
-        })
-        console.log(roundWinListRemove);
-        
-        // setTimeout(function() {
-        //   displaySecondStep.value = false;
-        //   displayThirdStep.value = true;
-        // }, 500)
-      }
-    })
+    if (resCross) {
+      winner.value = "Крестики";
+      buttons.forEach(item => {
+        item.classDisabled = "disabled"
+      })
+      setTimeout(function() {
+        displaySecondStep.value = false;
+        displayThirdStep.value = true;
+      }, 500)
+    }
   }
 
-  function crossWinCheck() {
-    const winCheckStr = winCheck.map(item => {
-      return String(item) == String(crossWinList)
-    })
+  resultGame()
 
-
-
-    winCheckStr.map(item=> {
-      if (item === true){
-        winner.value = "Крестики";
-        // setTimeout(function() {
-        //   displaySecondStep.value = false;
-        //   displayThirdStep.value = true;
-        // }, 500)
-      }
-    })
+  function drawCheck() {    
+    if(winner.value === "" && countClick.value==9) {
+      winner.value = "Ничья";
+      setTimeout(function() {
+        displaySecondStep.value = false;
+        displayThirdStep.value = true;
+      }, 500)
+    }
   }
 
-  roundWinCheck()
-  crossWinCheck()
+  drawCheck()
 });
 
 export const reset = function () {
