@@ -27,6 +27,10 @@
       flex-direction: column;
       background-color: #fff;
       width: 450px;
+      @media(max-width: 575px) {
+        width: auto;
+        padding: 30px;
+      }
     }
     &__title {
       text-align: center;

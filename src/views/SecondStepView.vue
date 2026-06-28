@@ -25,6 +25,12 @@
 </template>
 
 <style lang="scss" scoped>
+  .screen-2 {
+    @media(max-width: 340px) {
+      padding: 0 15px;
+    }
+  }
+
   .wrapper {
     border: 1px solid #9494df;
     border-radius: 10px;
@@ -32,20 +38,22 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    width: 350px;
+    @media(max-width: 420px) {
+      padding: 23px;
+    }
   }
 
   .cells {
-    width: 100%;
     margin-bottom: 30px;
     display: grid;
     grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
   }
 
   .cell {
     cursor: pointer;
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     border: 1px solid #000;
     &.disabled {
       pointer-events: none;

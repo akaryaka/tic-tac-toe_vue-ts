@@ -20,6 +20,15 @@
 </template>
 
 <style lang="scss" scoped>
+  .screen-1 {
+    @media(max-width: 525px) {
+      padding: 0 30px;
+      width: 100%;
+    }
+    @media(max-width: 340px) {
+      padding: 0 15px;
+    }
+  }
   .cells {
     &-header {
       border: 1px solid #9494df;
@@ -29,10 +38,17 @@
       flex-direction: column;
       background-color: #fff;
       width: 450px;
+      @media(max-width: 525px) {
+        width: 100%;
+        padding: 25px;
+      }
     }
     &__title {
       text-align: center;
       margin-bottom: 30px;
+      @media(max-width: 425px) {
+        font-size: 23px;
+      }
     }
     &__img {
       margin-bottom: 30px;
