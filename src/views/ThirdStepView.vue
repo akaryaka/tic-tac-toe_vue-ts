@@ -6,8 +6,12 @@
   <Transition>
     <div class="screen-3">
       <form action="#" class="cells-header">
-        <h2 class="cells__title">Победа!</h2>
-        <p>{{ winner }} победили</p>
+        <h2 class="cells__title">Игра окончена!</h2>
+        <p class="cells__message" v-if="winner=='Нолики' || winner=='Крестики'">
+          <span class="cells__winner" :class="{'win-cross': winner === 'Крестики', 'win-round': winner === 'Нолики'}">{{ winner }} &nbsp;</span>  
+          <span>победили</span> 
+        </p>
+        <p class="cells__message" v-else>{{ winner }}</p>
       </form>
     </div>
   </Transition>
@@ -27,11 +31,26 @@
     &__title {
       text-align: center;
       margin-bottom: 30px;
-    }}
+    }
+    &__message {
+      font-size: 20px;
+      text-align: center;
+    }
+    &__winner {
+      font-weight: 700;
+    }
+  }
+
+  .win-cross {
+    color: red;
+  }
+
+  .win-round {
+    color: green;
+  }
 
   .v-enter-active {
     transition: opacity 0.3s ease;
-
   }
 
   .v-leave-active {

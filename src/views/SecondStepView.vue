@@ -47,14 +47,15 @@
     width: 80px;
     height: 80px;
     border: 1px solid #000;
-   
     &.disabled {
       pointer-events: none;
     }
     &.round {
       position: relative;
+      transition: width .3s;
       &::before {
         content: "o";
+        transition: width .3s;
         position: absolute;
         font-size: 30px;
         color: #23e123;
