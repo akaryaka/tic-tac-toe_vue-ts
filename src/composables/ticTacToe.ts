@@ -41,6 +41,13 @@ watch(btnActive, (oldvalue, newvalue) => {
      return item != undefined
   })
 
+  console.log(roundWinList);
+  
+  
+  
+
+  // console.log(roundWinListRemove);
+  
   
   const crossWinList = btnActive.map(item => {
     if (item.class == "cross") {
@@ -58,10 +65,17 @@ watch(btnActive, (oldvalue, newvalue) => {
     winCheckStr.map(item=> {
       if (item === true){
         winner.value = "Нолики";
-        setTimeout(function() {
-          displaySecondStep.value = false;
-          displayThirdStep.value = true;
-        }, 500)
+        // для анимации 
+        const roundWinListRemove = buttons.filter((item) => !roundWinList.includes(item.id))
+        roundWinListRemove.forEach(item => {
+          item.classDisabled = "disabled"
+        })
+        console.log(roundWinListRemove);
+        
+        // setTimeout(function() {
+        //   displaySecondStep.value = false;
+        //   displayThirdStep.value = true;
+        // }, 500)
       }
     })
   }
@@ -71,13 +85,15 @@ watch(btnActive, (oldvalue, newvalue) => {
       return String(item) == String(crossWinList)
     })
 
+
+
     winCheckStr.map(item=> {
       if (item === true){
         winner.value = "Крестики";
-        setTimeout(function() {
-          displaySecondStep.value = false;
-          displayThirdStep.value = true;
-        }, 500)
+        // setTimeout(function() {
+        //   displaySecondStep.value = false;
+        //   displayThirdStep.value = true;
+        // }, 500)
       }
     })
   }
